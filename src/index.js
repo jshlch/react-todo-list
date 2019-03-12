@@ -1,5 +1,7 @@
 import React from 'react';
-import App from 'App';
+import ReactDOM from 'react-dom'
+import App from './App';
+import rootReducer from './reducers'
 import { render } from 'react-dom';
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux';
