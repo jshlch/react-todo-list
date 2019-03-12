@@ -1,0 +1,16 @@
+* {
+  color: #3b3b3b;
+}
+
+body {
+  background-color : #f6f6f6;
+}
+
+/*Font weights*/
+.light { font-weight: 300 !important; }
+.regular { font-weight: 400 !important; }
+.bold { font-weight: 500 !important; }
+/*Colors*/
+.black { color: #3b3b3b !important; }
+.light-gray { color: #909090 !important; }
+.gray { color: #666 !important; }
