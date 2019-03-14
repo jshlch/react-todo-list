@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "axios": "^0.18.0",
+    "dotenv": "^7.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
     "react-redux": "^6.0.1",
@@ -11,6 +12,8 @@
     "react-scripts": "2.1.8",
     "redux": "^4.0.1",
     "redux-form": "^8.1.0",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^1.0.2",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -27,5 +30,6 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {}
 }

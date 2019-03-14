@@ -1,14 +1,16 @@
 import {AUTH} from './constants'
 
 const INITIAL_STATE = {
-	isLoading: 'false'
+	user: {},
+	authToken: null,
+	isLoading: false
 }
 
-const login = (state = INITIAL_STATE, action) => {
+const app = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		default:
 			return state
 	}
 }
 
-export default login
+export default app

@@ -10,16 +10,17 @@ class Login extends Component {
 	constructor(props) {
 		super(props)
 
+		this.renderInput.bind(this)
 		this.handleFormSubmit.bind(this)
 	}
 
-	handleFormSubmit() {
-
+	handleFormSubmit(formValues) {
+		console.log(formValues)
 	}
 
-	renderInput({input, fid, placeholder, meta}) {
+	renderInput({input, fid, placeholder, type, meta}) {
 		return(
-			<TextField fid={fid} placeholder={placeholder} {...input} />
+			<TextField fid={fid} placeholder={placeholder} type={type} {...input} />
 		)
 	}
 
@@ -30,22 +31,23 @@ class Login extends Component {
 				<Card variant="w-50">
 					<h4 className="bold">Login</h4>
 						<Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
-							<div className="login-wrapper__form mt-5 mb-3">
+							<div className="login-wrapper__form my-4">
 								<Field 
 									name="username" 
-									component={this.renderInput} 
 									fid="username"
 									placeholder="Username"
+									component={this.renderInput} 
 								/>
 								<Field 
 									name="password" 
-									component={this.renderInput} 
 									fid="password"
+									type="password"
 									placeholder="Password"	
+									component={this.renderInput} 
 								/>
 							</div>
 							<Button variant="btn" text="Login"/>
-							<Button variant="btn-flat gray" text="Register"/>
+							<Button variant="btn-flat gray" text="Register" link="/register"/>
 						</Form>
 				</Card>
 			</div>

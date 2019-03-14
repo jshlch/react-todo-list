@@ -7,6 +7,7 @@ const routes = () => {
 		<Router>
 			<div>
 				<Route exact path="/" component={() => <Login />} />
+				<Route exact path="/register" component={() => <Registration />} />
 			</div>
 		</Router>
 	)

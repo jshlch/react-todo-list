@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Button = ({variant, link, text}) => {
+const Button = ({variant, link, text, type, onClick}) => {
 	if(link) {
 		return(
 			<Link to={link}>

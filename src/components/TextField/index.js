@@ -1,11 +1,11 @@
 import React from 'react'
 
-const TextField = ({fid, onChange, placeholder}) => {
+const TextField = ({fid, onChange, placeholder, type}) => {
 	return(
 		<div className="input-field">
       <input 
 	      id={fid} 
-	      type="text" 
+	      type={type || 'text'} 
 	      className="validate" 
 	      autoComplete="off" 
 	      onChange={onChange}
