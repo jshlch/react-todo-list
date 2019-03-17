@@ -1,16 +1,16 @@
 import React from 'react'
 
-const TextField = ({fid, onChange, placeholder, type}) => {
+const TextField = ({fid, onChange, placeholder, type, variant}) => {
 	return(
-		<div className="input-field">
+		<div className={`form-group ${variant} w-100`}>
       <input 
 	      id={fid} 
 	      type={type || 'text'} 
-	      className="validate" 
-	      autoComplete="off" 
+	      className="form-control" 
 	      onChange={onChange}
+	      autoComplete="off" 
+	      placeholder={placeholder}
       />
-      <label htmlFor={fid}>{placeholder}</label>
     </div>
 	)
 }

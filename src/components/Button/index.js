@@ -5,14 +5,14 @@ const Button = ({variant, link, text, type, onClick}) => {
 	if(link) {
 		return(
 			<Link to={link}>
-				<button className={`${variant} waves-effect bold`} type="submit">
+				<button className={`btn ${variant} bold`} type="submit">
 					{text}
 				</button>
 			</Link>
 		)
 	}
 	return(
-		<button className={`${variant} waves-effect bold`} type="submit">
+		<button className={`btn ${variant} bold`} type="submit">
 			{text}
 		</button>
 	)

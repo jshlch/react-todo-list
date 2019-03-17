@@ -4,55 +4,62 @@ import Loader from '../../components/Loader'
 import Button from '../../components/Button'
 import Form from '../../components/Form'
 import TextField from '../../components/TextField'
+import FieldError from '../../components/FieldError'
 import {connect} from 'react-redux'
 import {reduxForm, Field} from 'redux-form'
 import {registerUser} from './actions'
 import './style.css'
 
 class Registration extends Component {
+	
 	handleFormSubmit = formValues => {
 		const {registerUser} = this.props
 		registerUser(formValues)
 	}
 
-	renderInput({input, fid, placeholder, type, meta}) {
+	renderInput({input, fid, placeholder, type, variant, meta}) {
 		return(
-			<TextField fid={fid} placeholder={placeholder} type={type} {...input} />
+			<TextField fid={fid} placeholder={placeholder} type={type} variant={variant} {...input} />
 		)
 	}
 
 	render() {
-		console.log(process.env.REACT_APP_DEV_API_URL)
-		const {isLoading} = this.props
+		const {errors, isLoading, handleSubmit} = this.props
 		return(
 			<div className="registration-wrapper d-flex align-items-center justify-content-center">
 			<Loader isLoading={isLoading}/>
 				<Card variant="w-50">
 					<h4 className="bold">Register</h4>
-						<Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
-							<div className="registration-wrapper__form my-4">
+						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 								<Field 
-									name="name" 
-									component={this.renderInput} 
 									fid="name"
+									name="name"
+									component={this.renderInput} 
 									placeholder="Name"
+									variant="mt-4"
 									/>
+								<FieldError errors={errors} field="name"/>
 								<Field 
+									fid="username"
 									name="username" 
 									component={this.renderInput} 
-									fid="username"
 									placeholder="Username"
+									variant="mt-4"
 								/>
+								<FieldError errors={errors} field="username"/>
 								<Field 
-									name="password" 
-									component={this.renderInput} 
 									fid="password"
+									name="password" 
 									type="password"
+									component={this.renderInput} 
 									placeholder="Password"	
+									variant="mt-4"
 								/>
+								<FieldError errors={errors} field="password"/>
+							<div className="mt-5">
+								<Button variant="btn-raised btn-primary w-50" text="Register"/>
+								<Button variant="btn-secondary gray w-50" text="Login" link="/"/>
 							</div>
-							<Button variant="btn" text="Register"/>
-							<Button variant="btn-flat gray" text="Login" link="/"/>
 						</Form>
 				</Card>
 			</div>
@@ -61,7 +68,9 @@ class Registration extends Component {
 }
 
 const mapStateToProps = state => ({
-	isLoading: state.registration.isLoading
+	errors: state.registration.response.errors,
+	hasErrors: state.registration.meta.hasErrors,
+	isLoading: state.registration.meta.isLoading
 })
 
 const mapDispatchToProps = dispatch => {
@@ -71,7 +80,7 @@ const mapDispatchToProps = dispatch => {
 }
 
 const form = reduxForm({
-	form: 'registrationForm'
+	form: 'RegistrationForm'
 })
 
 const withRedux = connect(mapStateToProps, mapDispatchToProps)(form(Registration))

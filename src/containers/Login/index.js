@@ -1,42 +1,41 @@
 import React, {Component} from 'react'
 import Card from '../../components/Card'
+import Loader from '../../components/Loader'
 import Button from '../../components/Button'
 import Form from '../../components/Form'
 import TextField from '../../components/TextField'
 import {reduxForm, Field} from 'redux-form'
+import {connect} from 'react-redux'
+import {login} from './actions'
 import './style.css'
 
 class Login extends Component {
-	constructor(props) {
-		super(props)
 
-		this.renderInput.bind(this)
-		this.handleFormSubmit.bind(this)
+	handleFormSubmit = formValues => {
+		this.props.authUser(formValues)
 	}
 
-	handleFormSubmit(formValues) {
-		console.log(formValues)
-	}
-
-	renderInput({input, fid, placeholder, type, meta}) {
+	renderInput({input, fid, placeholder, variant, type, meta}) {
+		console.log(input)
 		return(
-			<TextField fid={fid} placeholder={placeholder} type={type} {...input} />
+			<TextField fid={fid} placeholder={placeholder} type={type} variant={variant} {...input} />
 		)
 	}
 
 	render() {
-		console.log(this.props)
+		const {handleSubmit, isLoading} = this.props;
 		return(
 			<div className="login-wrapper d-flex align-items-center justify-content-center">
+				<Loader isLoading={isLoading}/>
 				<Card variant="w-50">
 					<h4 className="bold">Login</h4>
-						<Form onSubmit={this.props.handleSubmit(this.handleFormSubmit)}>
-							<div className="login-wrapper__form my-4">
+						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 								<Field 
 									name="username" 
 									fid="username"
 									placeholder="Username"
 									component={this.renderInput} 
+									variant="mt-4"
 								/>
 								<Field 
 									name="password" 
@@ -44,10 +43,12 @@ class Login extends Component {
 									type="password"
 									placeholder="Password"	
 									component={this.renderInput} 
+									variant="mt-4"
 								/>
+								<div className="mt-5">
+									<Button variant="btn-raised btn-primary w-50" text="Login" />
+									<Button variant="btn-secondary gray w-50" text="Register"  link="/register"/>
 							</div>
-							<Button variant="btn" text="Login"/>
-							<Button variant="btn-flat gray" text="Register" link="/register"/>
 						</Form>
 				</Card>
 			</div>
@@ -55,8 +56,18 @@ class Login extends Component {
 	}
 }
 
-const withRedux = reduxForm({ 
-	form: 'loginForm'
-})(Login)
+const mapDispatchToProps = dispatch => ({
+	authUser: values => dispatch(login(values))
+})
+
+const mapStateToProps = state => ({
+		isLoading: state.auth.meta.isLoading
+})
+
+const form = reduxForm({
+	form: 'LoginForm'
+})
+
+const withRedux = connect(mapStateToProps, mapDispatchToProps)(form(Login))
 
 export default withRedux

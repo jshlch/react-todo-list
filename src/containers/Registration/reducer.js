@@ -1,16 +1,39 @@
 import {AUTH} from './constants'
 
 const INITIAL_STATE = {
-	user: {},
-	isLoading: false
+	response: {},
+	meta: {
+		isLoading: false,
+		hasErrors: false
+	}
 }
 
 const app = (state = INITIAL_STATE, action) => {
 	switch(action.type) {
 		case AUTH.REGISTER_USER:
-			return {...state, isLoading: true}
+			return {
+				...state, 
+				meta: {
+					isLoading: true,
+					hasErrors: false
+				}
+			}
 		case AUTH.REGISTER_USER_SUCCESS:
-			return {user: action.payload, isLoading: false}
+			return {
+				response: action.payload, 
+				meta: {
+					isLoading: false,
+					hasErrors: false
+				}
+			}
+		case AUTH.REGISTER_USER_VALIDATION_FAILED:
+			return {
+				response: action.payload, 
+				meta: {
+					isLoading: false,
+					hasErrors: true
+				}
+			}
 		default:
 			return state
 	}

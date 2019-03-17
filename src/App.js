@@ -1,10 +1,12 @@
 import React from 'react';
-import MainRoute from './routes'
+import MainRoutes from './rootRoutes'
+import { BrowserRouter } from 'react-router-dom'
 
 const App = () => {
   return(
-    <MainRoute />
+    	<MainRoutes />
   )
 }
 
 export default App
+
