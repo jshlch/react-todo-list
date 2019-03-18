@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Card from '../../components/Card'
 import TextField from '../../components/TextField'
 import Form from '../../components/Form'
+import List from './List'
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import './style.css'
@@ -23,22 +24,23 @@ class Todo extends Component {
 		const {handleSubmit} = this.props;
 		return (
 			<div className="todo-wrapper d-flex align-items-center justify-content-center">
-					<Card variant="w-50"> 
+					<div className="w-50 p-5"> 
 						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
-							<div className="d-flex align-items-baseline">
-								<i className="fas fa-plus light-gray mr-3"></i>
+							<div className="d-flex align-items-center">
+								<i className="far fa-sticky-note medium light-gray mr-4"></i>
 								<Field 
 										name="todo" 
 										fid="todo"
-										placeholder="What to do next?"
+										placeholder="What is your next plan?"
 										component={this.renderInput} 
 									/>
 							</div>
 						</Form>
-						<div>
+						<div className="mt-4">
 							<h4 className="bold">Todos</h4>
+							<List /> 
 						</div>
-					</Card>
+					</div>
 			</div>
 		);
 	}

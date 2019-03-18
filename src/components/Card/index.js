@@ -2,7 +2,7 @@ import React from 'react'
 
 const Card = ({variant, children}) => {
 	return(
-		<div className={`card p-5 ${variant}`}>
+		<div className={`card ${variant}`}>
      	{children}
     </div>
 	)

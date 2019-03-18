@@ -27,7 +27,7 @@ class Login extends Component {
 		return(
 			<div className="login-wrapper d-flex align-items-center justify-content-center">
 				<Loader isLoading={isLoading}/>
-				<Card variant="w-50">
+				<Card variant="w-50 p-5">
 					<h4 className="bold">Login</h4>
 						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 								<Field 

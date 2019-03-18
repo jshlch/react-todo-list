@@ -14,3 +14,8 @@ body {
 .black { color: #3b3b3b !important; }
 .light-gray { color: #909090 !important; }
 .gray { color: #666 !important; }
+
+.xsmall{ font-size: .8rem; }
+.small{ font-size: 1rem; }
+.medium{ font-size: 1.3rem; }
+.large{ font-size: 1.5rem; }

@@ -28,7 +28,7 @@ class Registration extends Component {
 		return(
 			<div className="registration-wrapper d-flex align-items-center justify-content-center">
 			<Loader isLoading={isLoading}/>
-				<Card variant="w-50">
+				<Card variant="w-50 p-5">
 					<h4 className="bold">Register</h4>
 						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
 								<Field 
