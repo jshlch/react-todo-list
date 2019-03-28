@@ -10,7 +10,7 @@ function* loginUser(action) {
 		const response = yield call(api.login, action.payload)
 		yield put(auth.loginSuccess(response.data))
 	} catch(err) {
-		yield console.log('React JS '+err)
+		yield console.log('React JS'+err)
 	}
 }
 

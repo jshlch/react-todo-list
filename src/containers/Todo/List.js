@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import TodoItem from '../../components/TodoItem'
 
 class List extends Component {	
 	render() {
-		return (
-			<div className="mt-3">
-				<TodoItem todo="Wash the dishes" date="01/02/19"/> 
-				<TodoItem todo="Take a bath" date="01/02/19"/> 
-				<TodoItem todo="Feed the homeless" date="01/02/19"/> 
-				<TodoItem todo="Punch the wall" date="01/02/19"/> 
+		const renderedList = this.props.todos.map(todo => {
+			return (
+					<TodoItem todo={todo.description} date={todo.date}/> 
+			);
+		})
+		return(
+			<div >
+				{renderedList}
 			</div>
-		);
+		)
 	}
 }
 
-export default List
+const mapStateToProps = state => ({
+		isLoading: state.auth.meta.isLoading,
+		todos: state.todos.data
+})
+
+// const form = reduxForm({
+// })
+
+const withRedux = connect(mapStateToProps, null)(List)
+
+export default withRedux

@@ -10,7 +10,6 @@ import {login} from './actions'
 import './style.css'
 
 class Login extends Component {
-
 	handleFormSubmit = formValues => {
 		this.props.authUser(formValues)
 	}

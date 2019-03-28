@@ -1,6 +1,6 @@
 import React from 'react'
 import { Login, Registration, Todo } from './pages'
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
+import {Route, Switch } from 'react-router-dom'
 
 const routes = () => {
 	return(
