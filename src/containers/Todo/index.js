@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
 import Card from '../../components/Card'
+import Loader from '../../components/Loader'
 import TextField from '../../components/TextField'
 import Form from '../../components/Form'
-import List from './List'
+import TodoList from './TodoList'
 import './style.css'
 import {addTodo} from './actions'
 
@@ -31,9 +32,10 @@ class Todo extends Component {
 	}
 
 	render() {
-		const {handleSubmit} = this.props;
+		const {isLoading, hasErrors, handleSubmit} = this.props;
 		return (
 			<div className="todo-wrapper d-flex align-items-center justify-content-center">
+				<Loader isLoading={isLoading}/>
 					<div className="w-50 p-5"> 
 						<div className="">
 							<h4 className="bold">Todos</h4>
@@ -50,7 +52,7 @@ class Todo extends Component {
 									</div>
 								</Form>
 							</div>
-							<List /> 
+							<TodoList /> 
 						</div>
 					</div>
 			</div>
@@ -62,14 +64,15 @@ const mapDispatchToProps = dispatch => ({
 	addTodo : data => dispatch(addTodo(data))
 })
 
-// const mapStateToProps = this.state. ({
-// 	null
-// })
+const mapStateToProps = state =>  ({
+	hasErrors: state.todos.meta.hasErrors,
+	isLoading: state.todos.meta.isLoading
+})
 
 const form = reduxForm({
 	form: 'AddTodoForm'
 })
 
-const withRedux = connect(null, mapDispatchToProps)(form(Todo))
+const withRedux = connect(mapStateToProps, mapDispatchToProps)(form(Todo))
 
 export default withRedux

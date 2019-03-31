@@ -14,3 +14,7 @@ export const markTodoAsDone = params =>  ({
 	type: TODO.MARK_TODO_AS_DONE,
 	payload: params
 })
+
+export const success = () =>  ({
+	type: TODO.SUCCESS
+})

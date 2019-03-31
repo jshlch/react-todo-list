@@ -6,6 +6,10 @@ body {
   background-color : #f6f6f6;
 }
 
+input:first-letter {
+  text-transform: capitalize;
+}
+
 /*Font weights*/
 .light { font-weight: 300 !important; }
 .regular { font-weight: 400 !important; }

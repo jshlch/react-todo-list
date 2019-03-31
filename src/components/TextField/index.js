@@ -6,7 +6,7 @@ const TextField = ({fid, onChange, placeholder, type, variant}) => {
 			<input 
 				id={fid} 
 				type={type || 'text'} 
-				className="form-control capitalize" 
+				className="form-control upppercase" 
 				onChange={onChange}
 				autoComplete="off" 
 				placeholder={placeholder}

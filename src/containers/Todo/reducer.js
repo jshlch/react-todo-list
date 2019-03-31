@@ -21,6 +21,26 @@ const todo = (state = INITIAL_STATE, action) => {
 					hasErrors: false
 				}
 			}
+		case TODO.DELETE_TODO:
+			const newData = state.data.filter(todo => todo.description !== action.payload )
+			return {
+				data: newData, 
+				meta: {
+					isLoading: true,
+					hasErrors: false
+				}
+			}
+		case TODO.SUCCESS:
+			console.log("TEST")
+			return {
+				data: [
+					...state.data
+				],
+				meta: {
+					isLoading: false,
+					hasErrors: false
+				}
+			}
 		default:
 			return state
 	}

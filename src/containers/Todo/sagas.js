@@ -20,17 +20,29 @@ function* addTodo(action) {
 	// 	yield console.log('React JS '+err)
 	// }
 	yield put(todo.addTodo(action.payload))
+	yield put(todo.success())
 	yield put(dispatch(reset('AddTodoForm')))
 }
+
+function* deleteTodo(action) {
+	yield put(todo.deleteTodo(action.payload))
+	yield put(todo.success())
+}
+
 
 // Watcher saga: watches for actions dispatched to the store, starts worker saga
 function* watchRequestAddTodo() {
 	yield takeEvery(TODO.ADD_TODO, addTodo)
 }
 
-export default function* registration() {
+function* watchRequestDeleteTodo() {
+	yield takeEvery(TODO.DELETE_TODO, deleteTodo);
+}
+
+export default function* todo() {
 	yield all([
-		fork(watchRequestRegisterUser)
+		fork(watchRequestAddTodo),
+		fork(watchRequestDeleteTodo)
 	])
 }
 

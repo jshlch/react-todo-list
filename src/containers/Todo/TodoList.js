@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import TodoItem from '../../components/TodoItem'
+import TodoItem from './TodoItem'
 
-class List extends Component {	
+class TodoList extends Component {	
 	render() {
 		const renderedList = this.props.todos.map(todo => {
 			return (
@@ -25,6 +25,6 @@ const mapStateToProps = state => ({
 // const form = reduxForm({
 // })
 
-const withRedux = connect(mapStateToProps, null)(List)
+const withRedux = connect(mapStateToProps, null)(TodoList)
 
 export default withRedux

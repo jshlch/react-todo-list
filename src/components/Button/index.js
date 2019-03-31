@@ -12,7 +12,7 @@ const Button = ({variant, link, text, type, onClick}) => {
 		)
 	}
 	return(
-		<button className={`btn ${variant} bold`} type="submit">
+		<button className={`btn ${variant} bold`} type="submit"  onClick={onClick}>
 			{text}
 		</button>
 	)
