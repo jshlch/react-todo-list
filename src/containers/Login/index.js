@@ -5,7 +5,7 @@ import Card from '../../components/Card'
 import Button from '../../components/Button'
 import Form from '../../components/Form'
 import {renderTextField} from '../../components/ReduxFormField'
-import {login} from './redux/actions'
+import {login} from '../../redux/Login/actions'
 import './_style.css'
 
 function Login (props) {
@@ -18,7 +18,7 @@ function Login (props) {
 	return(
 		<div className="login-wrapper d-flex align-items-center justify-content-center">
 			<Card variant="w-50 p-5">
-				<h4 className="gray light">Login</h4>
+				<h4 className="gray bold">Login</h4>
 					<Form onSubmit={handleSubmit(handleFormSubmit)}>
 						<Field 
 							name="username" 

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import {addTodo} from './redux/actions'
-import {logout} from '../Login/redux/actions'
+import {addTodo} from '../../redux/Todo/actions'
+import {logout} from '../../redux/Login/actions'
 import {renderTextField} from '../../components/ReduxFormField'
 import Form from '../../components/Form'
 import TodoList from './TodoList'
@@ -30,11 +30,11 @@ function Todo (props) {
 			</div>
 			<div className="d-flex flex-column justify-content-center w-50 p-5"> 
 				<div className="">
-					<h4 className="gray light">Todos</h4>
+					<h4 className="gray bold">Todo list</h4>
 					<div className="my-4">
 						<Form onSubmit={handleSubmit(handleFormSubmit)}>
 							<div className="d-flex align-items-center">
-								<i className="far fa-sticky-note medium light-gray mr-4"></i>
+								<i className="far fa-sticky-note medium light-gray mr-3"></i>
 								<Field 
 									name="todo" 
 									fid="todo"

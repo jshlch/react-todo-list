@@ -1,22 +1,22 @@
 import {put, call, fork, takeLatest, all} from 'redux-saga/effects'
-import { showLoading, hideLoading } from 'react-redux-loading-bar'
+import {showLoading, hideLoading} from 'react-redux-loading-bar'
 import {reset} from 'redux-form'
 import {TODO} from './constants'
-import * as api from '../api'
 import * as action from './actions'
+import * as api from '../../services/Todo/api'
 
 // Worker sagas
 // @param  returns action object
 function* fetchTodos ({type, payload}) {
 	try {
-    	yield put(showLoading())
+		yield put(showLoading())
 		const response = yield call(api.fetchTodos)
 		const {success, data} = response.data
 		if (success) {
 			yield put(action.successTodo(data.todos))
 			yield put(reset('AddTodoForm'))
 		}
-    	yield put(hideLoading())
+		yield put(hideLoading())
 	} catch (err) {
 		yield console.log(err)
 	} 
@@ -24,7 +24,7 @@ function* fetchTodos ({type, payload}) {
 
 function* addTodo ({type, payload}) {
 	try {
-    	yield put(showLoading())
+			yield put(showLoading())
 		const response = yield call(api.addTodo, payload)
 		const {success, data} = response.data
 		if(success) {
@@ -33,7 +33,7 @@ function* addTodo ({type, payload}) {
 		} else {
 			yield console.log("SOMETHING WENT WRONG")
 		}
-    	yield put(hideLoading())
+			yield put(hideLoading())
 	} catch(err) {
 		yield console.log(err)
 	}
@@ -41,7 +41,7 @@ function* addTodo ({type, payload}) {
 
 function* deleteTodo ({type, payload}) {
 	try {
-    	yield put(showLoading())
+			yield put(showLoading())
 		const response = yield call(api.deleteTodo, payload)
 		const {success, data} = response.data
 		if(success) {
@@ -49,7 +49,7 @@ function* deleteTodo ({type, payload}) {
 		} else {
 			yield console.log("SOMETHING WENT WRONG")
 		}
-    	yield put(hideLoading())
+			yield put(hideLoading())
 	} catch(err) {
 		yield console.log(err)
 	}
@@ -57,7 +57,7 @@ function* deleteTodo ({type, payload}) {
 
 function* updateTodo ({type, payload}) {
 	try {
-    	yield put(showLoading())
+			yield put(showLoading())
 		const response = yield call(api.updateTodo, payload)
 		const {success, data} = response.data
 		if(success) {
@@ -65,7 +65,7 @@ function* updateTodo ({type, payload}) {
 		} else {
 			yield console.log("SOMETHING WENT WRONG")
 		}
-    	yield put(hideLoading())
+			yield put(hideLoading())
 	} catch(err) {
 		yield console.log(err)
 	}

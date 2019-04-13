@@ -1,5 +1,5 @@
 import {TODO} from './constants'
-import {AUTH} from '../../Login/redux/constants'
+import {AUTH} from '../Login/constants'
 
 const INITIAL_STATE = {
 	data: [],

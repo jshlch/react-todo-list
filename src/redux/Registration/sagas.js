@@ -2,9 +2,9 @@ import { push } from 'connected-react-router'
 import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import {reset} from 'redux-form'
 import {put, call, fork, takeLatest, all} from 'redux-saga/effects'
-import * as auth from './actions'
-import * as api from '../api'
 import {AUTH} from './constants'
+import * as auth from './actions'
+import * as api from '../../services/Registration/api'
 
 // Worker saga
 function* register (action) {

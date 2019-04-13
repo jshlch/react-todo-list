@@ -3,8 +3,8 @@ import { showLoading, hideLoading } from 'react-redux-loading-bar'
 import { push } from 'connected-react-router'
 import {AUTH} from './constants'
 import * as action from './actions'
-import * as api from '../api'
-import * as util from '../../../utils/auth'
+import * as util from '../../utils/auth'
+import * as api from '../../services/Login/api'
 
 // Worker sagas
 // @param  returns action object

@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react'
 import { connect } from 'react-redux'
-import {fetchTodos, deleteTodo, updateTodo} from './redux/actions'
 import TodoListItem from '../../components/TodoListItem'
+import {fetchTodos, deleteTodo, updateTodo} from '../../redux/Todo/actions'
 
 function TodoList (props) {
 	// cDM
 	useEffect(() => {
+		console.log('Rendered')
 		setTimeout(() => { props.fetchTodos() }, 200)
 	} , [])
 

@@ -10,7 +10,7 @@ function TodoListItem (props) {
     <Card variant="p-4 mb-2">
       <div className="d-flex flex-row align-items-center justify-content-between">
         <div className="d-flex flex-column">
-          <span className={isDone ? 'done-text regular gray small uppercase' : 'regular gray small uppercase'}>{description}</span>
+          <span className={isDone ? 'done-text  gray small uppercase' : 'regular gray small uppercase'}>{description}</span>
           <span className={isDone ? 'done-text regular light-gray xsmall mt-1' : 'regular light-gray xsmall mt-1'}>{created_at}</span>
         </div>
         <div>

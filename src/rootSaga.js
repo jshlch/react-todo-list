@@ -1,7 +1,7 @@
 import {fork, all} from 'redux-saga/effects';
-import auth from './containers/Login/redux/sagas'
-import registration from './containers/Registration/redux/sagas'
-import todos from './containers/Todo/redux/sagas'
+import auth from './redux/Login/sagas'
+import registration from './redux/Registration/sagas'
+import todos from './redux/Todo//sagas'
 
 export default function* rootSaga() {
 	yield all([
