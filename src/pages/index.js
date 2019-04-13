@@ -1,3 +1,3 @@
-export { default as Login } from './Login'
-export { default as Registration } from './Registration'
-export { default as Todo } from './Todo'
+export { default as PageLogin } from './Login'
+export { default as PageRegistration } from './Registration'
+export { default as PageTodo } from './Todo'

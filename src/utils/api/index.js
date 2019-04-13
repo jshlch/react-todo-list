@@ -1,13 +1,12 @@
 import axios from 'axios';
+import * as utils from '../../utils/auth'
 
 axios.defaults.baseURL = process.env.REACT_APP_DEV_API_URL;
 
-const getAuthenticationHeaders = () => {
-  return {
-    Accept: 'application/json'
-    // Authorization: `token `
-  };
-};
+const getAuthenticationHeaders = () => ({
+    Accept: 'application/json',
+    Authorization: `Bearer ${utils.getToken()}`
+ })
 
 const getConfig = (params, options = {}) => {
   const headers = getAuthenticationHeaders();

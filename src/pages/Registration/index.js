@@ -1,10 +1,10 @@
 import React from 'react'
-import ContainerRegistration from '../../containers/Registration'
+import {ContainerRegistration} from '../../containers'
 
-const Registration = () => {
+const PageRegistration = () => {
 	return(
 		<ContainerRegistration />
 	)
 }
 
-export default Registration
+export default PageRegistration

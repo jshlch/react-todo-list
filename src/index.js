@@ -7,10 +7,8 @@ import { createBrowserHistory } from 'history'
 import { ConnectedRouter } from 'connected-react-router'
 
 function startApp() {
- 
- const history = createBrowserHistory()
- const store = configureStore(history)
-
+	const history = createBrowserHistory()
+	const store = configureStore(history)
 	ReactDOM.render(
 		<Provider store={store}>
 	    <ConnectedRouter history={history}>

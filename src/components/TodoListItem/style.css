@@ -1,0 +1,14 @@
+.done-text {
+  color: #cbcbcb !important;
+  font-style: italic;
+	text-decoration: line-through;
+	text-decoration-color: #cbcbcb;
+}
+.left-bar {
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 3px;
+	background-color: #009688;
+	height: 100%;
+}

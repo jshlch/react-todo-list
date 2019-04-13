@@ -1,3 +1,3 @@
-export Login from './Login'
-export Registration from './Registration'
-export Todo from './Todo'
+export { default as ContainerLogin } from './Login'
+export { default as ContainerRegistration } from './Registration'
+export { default as ContainerTodo } from './Todo'

@@ -1,63 +1,70 @@
-import React, { Component } from 'react';
-import Card from '../../components/Card'
-import TextField from '../../components/TextField'
-import Form from '../../components/Form'
-import List from './List'
+import React from 'react';
 import { Field, reduxForm } from 'redux-form'
 import { connect } from 'react-redux'
-import './style.css'
+import {addTodo} from '../../redux/Todo/actions'
+import {logout} from '../../redux/Login/actions'
+import {renderTextField} from '../../components/ReduxFormField'
+import Form from '../../components/Form'
+import TodoList from './TodoList'
+import './_style.css'
 
-class Todo extends Component {
+function Todo (props) {
+	const {todos, handleSubmit} = props;
 
-	renderInput = ({input, fid, placeholder, type, meta}) => {
-		return(
-			<TextField fid={fid} placeholder={placeholder} type={type} {...input} />
-		)
+	const handleFormSubmit = (formData) => {
+		const todo = {
+			description: formData.todo
+		}
+		props.addTodo(todo)
 	}
 
-	handleFormSubmit = formValues => {
-		// this.props.authUser(formValues)
-		console.log(formValues)
+	const handleLogoutClick = () => {
+		props.logoutUser()
 	}
 
-	render() {
-		const {handleSubmit} = this.props;
-		return (
-			<div className="todo-wrapper d-flex align-items-center justify-content-center">
-					<div className="w-50 p-5"> 
-						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
+	return (
+		<div className={todos.length <= 3 ? 'todo-wrapper d-flex justify-content-center hv-100' : 'todo-wrapper d-flex justify-content-center'}>
+			<div className="d-flex align-items-center todo-logout pointer" onClick={handleLogoutClick}>
+				<i className="fas fa-chevron-left xxsmall light-gray"></i>
+				<span className="light-gray xsmall bold ml-2">LOGOUT</span>
+			</div>
+			<div className="d-flex flex-column justify-content-center w-50 p-5"> 
+				<div className="">
+					<h4 className="gray bold">Todo list</h4>
+					<div className="my-4">
+						<Form onSubmit={handleSubmit(handleFormSubmit)}>
 							<div className="d-flex align-items-center">
-								<i className="far fa-sticky-note medium light-gray mr-4"></i>
+								<i className="far fa-sticky-note medium light-gray mr-3"></i>
 								<Field 
-										name="todo" 
-										fid="todo"
-										placeholder="What is your next plan?"
-										component={this.renderInput} 
-									/>
+									name="todo" 
+									fid="todo"
+									placeholder="What is your next plan?"
+									component={renderTextField} 
+								/>
 							</div>
 						</Form>
-						<div className="mt-4">
-							<h4 className="bold">Todos</h4>
-							<List /> 
-						</div>
 					</div>
+					<TodoList /> 
+				</div>
 			</div>
-		);
-	}
+		</div>
+	)
 }
 
-// const mapDispatchToProps = dispatch ({
-// 	null
-// })
+const mapDispatchToProps = dispatch => ({
+	addTodo : data => dispatch(addTodo(data)),
+	logoutUser : () => dispatch(logout())
+})
 
-// const mapStateToProps = this.state. ({
-// 	null
-// })
+const mapStateToProps = state =>  ({
+	todos: state.todos.data,
+	isLoading: state.todos.meta.isLoading
+})
 
 const form = reduxForm({
 	form: 'AddTodoForm'
 })
 
-const withRedux = connect(null, null)(form(Todo))
+const withRedux = connect(mapStateToProps, mapDispatchToProps)(form(Todo))
 
 export default withRedux

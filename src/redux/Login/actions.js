@@ -10,4 +10,13 @@ export const loginSuccess = params =>  ({
 	payload: params
 })
 
+export const loginFailed = params =>  ({
+	type: AUTH.LOGIN_FAILED,
+	payload: params
+})
+
+export const logout = () =>  ({
+	type: AUTH.LOGOUT
+})
+
 

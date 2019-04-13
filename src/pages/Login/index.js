@@ -1,10 +1,10 @@
 import React from 'react'
-import ContainerLogin from '../../containers/Login'
+import {ContainerLogin} from '../../containers'
 
-const Login = () => {
+const PageLogin = () => {
 	return(
 		<ContainerLogin />
 	)
 }
 
-export default Login
+export default PageLogin

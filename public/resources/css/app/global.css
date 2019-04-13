@@ -1,9 +1,16 @@
+@import url('https://fonts.googleapis.com/css?family=Rubik:300,400,500');
+
 * {
   color: #3b3b3b;
+  font-family: 'Rubik';
 }
 
 body {
   background-color : #f6f6f6;
+}
+
+input:first-letter {
+  text-transform: capitalize;
 }
 
 /*Font weights*/
@@ -15,7 +22,20 @@ body {
 .light-gray { color: #909090 !important; }
 .gray { color: #666 !important; }
 
+.xxsmall{ font-size: .7rem; }
 .xsmall{ font-size: .8rem; }
 .small{ font-size: 1rem; }
 .medium{ font-size: 1.3rem; }
 .large{ font-size: 1.5rem; }
+
+.uppercase { text-transform: uppercase; }
+.capitalize { text-transform: capitalize; }
+
+.pointer { cursor: pointer !important; }
+
+.loader {
+  position: fixed;
+  background-color: #009688;
+  height: 3px;
+  z-index: 99999;
+}
