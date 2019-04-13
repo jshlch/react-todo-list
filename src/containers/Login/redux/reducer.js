@@ -23,6 +23,20 @@ const login = (state = INITIAL_STATE, action) => {
 					isLoading: false
 				} 
 			}
+		case AUTH.LOGIN_FAILED:
+			return {
+				response: action.payload,
+				meta: {
+					isLoading: false
+				} 
+			}
+		case AUTH.LOGOUT:
+			return {
+				response: {},
+				meta: {
+					isLoading: false
+				} 
+			}
 		default:
 			return state
 	}
