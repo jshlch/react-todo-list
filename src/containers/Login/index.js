@@ -1,62 +1,52 @@
-import React, {Component} from 'react'
+import React from 'react'
+import {connect} from 'react-redux'
+import {reduxForm, Field} from 'redux-form'
 import Card from '../../components/Card'
-import Loader from '../../components/Loader'
 import Button from '../../components/Button'
 import Form from '../../components/Form'
-import TextField from '../../components/TextField'
-import {reduxForm, Field} from 'redux-form'
-import {connect} from 'react-redux'
-import {login} from './actions'
-import './style.css'
+import {renderTextField} from '../../components/ReduxFormField'
+import {login} from './redux/actions'
+import './_style.css'
 
-class Login extends Component {
-	handleFormSubmit = formValues => {
-		this.props.authUser(formValues)
-	}
+function Login (props) {
+	const {handleSubmit, isLoading, loginUser} = props
 
-	renderInput({input, fid, placeholder, variant, type, meta}) {
-		console.log(input)
-		return(
-			<TextField fid={fid} placeholder={placeholder} type={type} variant={variant} {...input} />
-		)
-	}
+  	const handleFormSubmit = formValues => {
+	 	loginUser(formValues)
+  }
 
-	render() {
-		const {handleSubmit, isLoading} = this.props;
-		return(
-			<div className="login-wrapper d-flex align-items-center justify-content-center">
-				<Loader isLoading={isLoading}/>
-				<Card variant="w-50 p-5">
-					<h4 className="bold">Login</h4>
-						<Form onSubmit={handleSubmit(this.handleFormSubmit)}>
-								<Field 
-									name="username" 
-									fid="username"
-									placeholder="Username"
-									component={this.renderInput} 
-									variant="mt-4"
-								/>
-								<Field 
-									name="password" 
-									fid="password"
-									type="password"
-									placeholder="Password"	
-									component={this.renderInput} 
-									variant="mt-4"
-								/>
-								<div className="mt-5">
-									<Button variant="btn-raised btn-primary w-50" text="Login" />
-									<Button variant="btn-secondary gray w-50" text="Register"  link="/register"/>
-							</div>
-						</Form>
-				</Card>
-			</div>
-		)
-	}
+	return(
+		<div className="login-wrapper d-flex align-items-center justify-content-center">
+			<Card variant="w-50 p-5">
+				<h4 className="gray light">Login</h4>
+					<Form onSubmit={handleSubmit(handleFormSubmit)}>
+						<Field 
+							name="username" 
+							component={renderTextField} 
+							fid="username"
+							placeholder="Username"
+							variant="mt-4"
+						/>
+						<Field 
+							name="password" 
+							fid="password"
+							type="password"
+							placeholder="Password"	
+							component={renderTextField} 
+							variant="mt-4"
+						/>
+						<div className="mt-5">
+							<Button variant="btn-raised btn-primary w-50" text="Login" />
+							<Button variant="btn-secondary gray w-50" text="Register"  link="/register"/>
+						</div>
+					</Form>
+			</Card>
+		</div>
+	)
 }
 
 const mapDispatchToProps = dispatch => ({
-	authUser: values => dispatch(login(values))
+	loginUser: values => dispatch(login(values))
 })
 
 const mapStateToProps = state => ({

@@ -1,10 +1,10 @@
 import React from 'react';
-import ContainerTodo from '../../containers/Todo'
+import {ContainerTodo} from '../../containers'
 
-const Todo = () => {
+const PageTodo = () => {
   return (
     <ContainerTodo />
   )
 }
 
-export default Todo;
+export default PageTodo;
