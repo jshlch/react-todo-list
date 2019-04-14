@@ -19,7 +19,7 @@ function TodoList (props) {
 	}
 
 	const renderedList = props.todos.map(todo => {
-		return <TodoListItem key={todo.id} todo={todo} handleDeleteClick={handleDeleteClick} handleDoneClick={handleDoneClick}/> 
+		return <TodoListItem key={todo.id} todo={todo} onDeleteClick={handleDeleteClick} onDoneClick={handleDoneClick}/> 
 		})
 	return (
 		<div>

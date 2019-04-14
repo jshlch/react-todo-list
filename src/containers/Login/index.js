@@ -11,9 +11,9 @@ import './_style.css'
 function Login (props) {
 	const {handleSubmit, isLoading, loginUser} = props
 
-  	const handleFormSubmit = formValues => {
-	 	loginUser(formValues)
-  }
+	const handleFormSubmit = formValues => {
+		loginUser(formValues)
+	}
 
 	return(
 		<div className="login-wrapper d-flex align-items-center justify-content-center">

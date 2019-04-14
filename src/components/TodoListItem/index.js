@@ -14,8 +14,8 @@ function TodoListItem (props) {
           <span className={isDone ? 'done-text regular light-gray xsmall mt-1' : 'regular light-gray xsmall mt-1'}>{created_at}</span>
         </div>
         <div>
-          {!isDone && <Button onClick={() => props.handleDoneClick(id)} variant="btn-flat btn-sm btn-primary" text="Done"/>}
-          <Button onClick={() => props.handleDeleteClick(id)} variant="btn-flat btn-sm light-gray" text="DELETE"/>
+          {!isDone && <Button onClick={() => props.onDoneClick(id)} variant="btn-flat btn-sm btn-primary" text="Done"/>}
+          <Button onClick={() => props.onDeleteClick(id)} variant="btn-flat btn-sm light-gray" text="DELETE"/>
         </div>
       </div>
     </Card>
